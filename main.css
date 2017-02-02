@@ -1,0 +1,18 @@
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+tr:nth-child(2n+1) {
+    background-color: #eeffee;
+}
+
+tr:hover {
+    background-color: #64B3E4;
+}
