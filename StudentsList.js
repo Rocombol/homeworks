@@ -1,11 +1,9 @@
 /**
- * returns true if number is palindrome, otherwise returns false
+ * create method showTable that build table of students;
  *
- * @param {number} 
- * @return {boolean} 
+ * @param {object} array of objects
+ *
  */
-
-//window.addEventListener('DOMContentLoaded', htmlTable, false);
 
 function StudentsList(data) {
 
@@ -45,6 +43,12 @@ function StudentsList(data) {
     };
 	
 }
+
+//create an instance of StudentsList
 var creator=new StudentsList(arrayofus);
 
+// show the table
 creator.showTable(arrayofus);
+
+
+
