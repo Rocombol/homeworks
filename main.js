@@ -17,6 +17,9 @@ function ready() {
    
     var table = document.querySelector('table');
 
+	
+	//delegate event to buttons
+	
     table.addEventListener('click', ShowHobby, false);
 
     function ShowHobby(event) {
