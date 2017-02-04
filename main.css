@@ -9,10 +9,14 @@ th {
     text-align: left;
 }
 
-tr:nth-child(2n+1) {
+tr{
     background-color: #eeffee;
 }
 
-tr:hover {
-    background-color: #64B3E4;
+.show {
+	visibility: visible !important;
 }
+table td:nth-child(5){
+	visibility: hidden;
+}
+
