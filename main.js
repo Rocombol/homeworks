@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', ready, false);
 
+
+/**
+ *  ready function is  manage our files;
+ *
+ */
+
 function ready() {
     var arrayofus = [
         new StudentsList('Alex', 'answer_quick', 'Male', true,'read books'),
@@ -14,10 +20,9 @@ function ready() {
     var creator = new View(arrayofus);
     // show the table
     creator.showTable(arrayofus);
-   
-    var table = document.querySelector('table');
+   	
+	var table = document.querySelector('table');
 
-	
 	//delegate event to buttons
 	
     table.addEventListener('click', ShowHobby, false);

@@ -45,7 +45,6 @@ function View(data) {
                 texttd = data[j][columns[i]];// value of td cell
 
                 if (texttd ===true) {
-
                     tablerow.appendChild(button);
                 } else {
                     tablehead.textContent = texttd;
