@@ -1,35 +1,43 @@
+'use strict'
 document.addEventListener('DOMContentLoaded', ready, false);
-
-
 /**
  *  ready function is  manage our files;
- *
  */
-
 function ready() {
-    var arrayofus = [
-        new StudentsList('Alex', 'answer_quick', 'Male', true,'read books'),
-        new StudentsList('Irina', 'kitty', 'Female',true, 'play with rabbit'),
-        new StudentsList('Polina', 'candy_polya', 'Female', true,'sweeming'),
-        new StudentsList('Svetlana', 'sweetie_sun', 'Female', true, 'cooking'),
-        new StudentsList('Elena', 'smile_soul', 'Female',true,'play anagrams'),
-        new StudentsList('Vladimir', 'vovanium', 'Male',true,'play sport')
+    var instStudList = new StudentsList();
 
-    ];
+    instStudList.studentToArray('Alex', 'answer_quick', 'Male', '+3805555333', 'answer_quick@hmail.com');
+    instStudList.studentToArray('Irina', 'kitty', 'Female', '+3801341522', 'kitty@hmail.com');
+    instStudList.studentToArray('Polina', 'candy_polya', 'Female', '+380187141', 'candy_polya@hmail.com');
+    instStudList.studentToArray('Svetlana', 'sweetie', 'Female', '+3801515154', 'sweetie@hmail.com');
+    instStudList.studentToArray('Elena', 'smile', 'Female', '+3806351511', 'smile@hmail.com');
+    instStudList.studentToArray('Vladimir', 'vovanium', 'Male', '+3807243305', 'vovanium@hmail.com');
+
     //create an instance of StudentsList
-    var creator = new View(arrayofus);
+    var creaionLive = new LiveView();
     // show the table
-    creator.showTable(arrayofus);
-   	
-	var table = document.querySelector('table');
+    creaionLive.showTable(instStudList.getLiveForm(arrayofus));
 
-	//delegate event to buttons
-	
-    table.addEventListener('click', ShowHobby, false);
+    var table = document.querySelector('table');
 
-    function ShowHobby(event) {
-        var target = event.target; 
-        if (target.tagName != 'BUTTON') return; 
-        target.nextElementSibling.classList.toggle('show');
-    }
+    //delegate event to buttons
+
+    table.addEventListener('click', showMoreInfo, false);
+
+
+    function showMoreInfo(event) {
+        var target = event.target,
+            creaionInfo = new InfoView,
+            infoTable = instStudList.getInfoForm(),
+            buttons = this.querySelectorAll("BUTTON");
+        
+        if (target.tagName != "BUTTON") return;
+            
+        for (var i = 0; i < buttons.length; i++){
+            if (buttons[i] == target) break;
+        }
+        
+        creaionInfo.showInfoTable([infoTable[i]])
+    };
+
 }

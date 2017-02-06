@@ -1,5 +1,6 @@
 table {
     border-collapse: collapse;
+	 float: left;
 }
 
 td,
@@ -12,11 +13,3 @@ th {
 tr{
     background-color: #eeffee;
 }
-
-.show {
-	visibility: visible !important;
-}
-table td:nth-child(5){
-	visibility: hidden;
-}
-
