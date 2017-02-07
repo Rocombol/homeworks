@@ -6,46 +6,37 @@
  */
 function InfoView(data) {
 
-    this.showInfoTable = function(data) {
-        var columns = Object.keys(data[0]),
-            table = document.createElement('table'),
-            thead = document.createElement('thead'),
-            tablerow,
-            tablehead,
-            tbody,
-            texttd,
-            button;
-
-        table.appendChild(thead);
-
-        tablerow = document.createElement('tr');
-
+    this.showInfoTable = function(data) { 
+        //check if we already have not empty additional field;
+        checkEmty();
+        
+        var contentElement = document.createElement('div'),
+            columns = Object.keys(data[0]),
+            html = '<table><thead><tr>',
+            texttd;
         columns.forEach(function(item, i) {
-            tablehead = document.createElement('th');
-            tablehead.textContent = columns[i];
-            tablerow.appendChild(tablehead);
-
+            html += '<th>' + columns[i] + '</th>';
         })
-
-        thead.appendChild(tablerow);
-
-        tbody = document.createElement('tbody');
-        table.appendChild(tbody);
-
+        html += '</tr></thead><tbody>';
         data.forEach(function(item, j) {
-
-            tablerow = document.createElement('tr');
-
+            html += '<tr>'
             columns.forEach(function(item, i) {
-                tablehead = document.createElement('td');
-                texttd = data[j][columns[i]]; // value of td cell
-                tablehead.textContent = texttd;
-                tablerow.appendChild(tablehead)
-				
+                texttd = data[j][columns[i]];
+                html += '<td>' + texttd + '</td>';
             });
-            tbody.appendChild(tablerow);
-
+            html += '</tr>';
         });
-        document.getElementById('content').insertAdjacentElement('BeforeEnd',table);
+        html += '</tbody></table>';
+        contentElement.innerHTML = html;
+        contentElement.classList.add('present'); 
+        document.getElementById('content').appendChild(contentElement);
     };
+
+        function checkEmty () {
+            var container = document.querySelector('#content');         
+            var childRemove = document.querySelector('.present');       
+            if (childRemove){
+                container.removeChild(childRemove)
+            }
+        }
 }

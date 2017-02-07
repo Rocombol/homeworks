@@ -4,54 +4,26 @@
  * @param {object} array of objects
  *
  */
-
 function LiveView(data) {
-
     this.showTable = function(data) {
-        var columns = Object.keys(data[0]),
-            table = document.createElement('table'),
-            thead = document.createElement('thead'),
-            tablerow,
-            tablehead,
-            tbody,
-            texttd,
-            button;
-
-        table.appendChild(thead);
-
-        tablerow = document.createElement('tr');
-
+        var contentElement = document.getElementById('content'),
+            columns = Object.keys(data[0]),
+            html = '<table><thead><tr>',
+            texttd;
         columns.forEach(function(item, i) {
-            tablehead = document.createElement('th');
-            tablehead.textContent = columns[i];
-            tablerow.appendChild(tablehead);
-
+            html += '<th>' + columns[i] + '</th>';
         })
-
-        thead.appendChild(tablerow);
-
-        tbody = document.createElement('tbody');
-        table.appendChild(tbody);
-
+        html += '</tr></thead><tbody>';
         data.forEach(function(item, j) {
-
-            tablerow = document.createElement('tr');
-
+            html += '<tr>'
             columns.forEach(function(item, i) {
-                tablehead = document.createElement('td');
-                button = document.createElement('button');
-                button.textContent = 'Get Info';
-                texttd = data[j][columns[i]]; // value of td cell
-                tablehead.textContent = texttd;
-                tablerow.appendChild(tablehead)
-
+                texttd = data[j][columns[i]];
+                html += '<td>' + texttd + '</td>';
             });
-            tablerow.appendChild(button)
-            ;
-            tbody.appendChild(tablerow);
-
+            html += '<td><button>Get Info</button></td>';
+            html += '</tr>';
         });
-
-        document.getElementById('content').appendChild(table);
+        html += '</tbody></table>';
+        contentElement.innerHTML = html;
     };
 }

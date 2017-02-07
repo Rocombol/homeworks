@@ -13,3 +13,7 @@ th {
 tr{
     background-color: #eeffee;
 }
+
+tr:hover {
+    background-color: #049FA4;
+}
