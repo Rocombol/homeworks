@@ -1,0 +1,11 @@
+ul{
+	margin-left: 225px;
+}
+
+
+li{
+	list-style-type: none;
+	display: inline;
+	padding-left: 25px;
+	background: #F9E2DF;
+}

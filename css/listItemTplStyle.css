@@ -1,6 +1,5 @@
 table {
     border-collapse: collapse;
-	 float: left;
 }
 
 td,
@@ -8,6 +7,7 @@ th {
     padding: 5px;
     border: 1px solid #ccc;
     text-align: left;
+	width: 220px;
 }
 
 tr{
