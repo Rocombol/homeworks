@@ -13,19 +13,19 @@ function ListItemView () {
 		
         content.append(itemDiv);
 
-        buttons = document.querySelectorAll('.showInfo')
+        buttons = document.querySelectorAll('.showInfo');
         
 		addInfoLstener(buttons);
 
         function addInfoLstener (buttonsColletion) {
             [].forEach.call(buttonsColletion, function (item,i) {
                 item.addEventListener('click', function () {
-					infoView=new InfoView();
-					clickElement=[valueHash[i]];
-					addInfoElement=document.body.querySelector('.addInfo');
+					infoView = new InfoView();
+					clickElement = [valueHash[i]];
+					addInfoElement = document.body.querySelector('.addInfo');
                     
 					if(addInfoElement){
-				    		addInfoElement.parentNode.innerHTML="";
+				    		addInfoElement.parentNode.innerHTML = "";
 							infoView.renderInfo(clickElement)
 					} else{
 						infoView.renderInfo(clickElement);

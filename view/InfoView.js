@@ -15,7 +15,7 @@ function InfoView () {
 				
 		closeButton.addEventListener('click', function(){			
 			closeButton.closest('div').innerHTML='';						
-		},false)
+		},false);
 				
     }
 
