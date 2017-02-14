@@ -1,29 +1,20 @@
 function ListView () {
     this.renderList = function(studentsArray) {		
-		var valueToChange=[],
-			listItemView=new ListItemView(),
-			contentElement = document.getElementById('content');
+		var listItemView=new ListItemView(),
+			contentElement = document.getElementById('content'),
+			itemTable = document.createElement('table')
 		
-		renderListTitle();
+		contentElement.innerHTML=listTpl;
 		
-		getHash(studentsArray);
-				
-		listItemView.renderItem(valueToChange, contentElement);
-		
-        function renderListTitle () {
-            var header = document.createElement('div');
+		studentsArray.forEach(function(itemStudent){
+			var tr=listItemView.renderItem(itemStudent);
 			
-            header.innerHTML = listTpl;
-			
-            contentElement.appendChild(header);
-        };
+			itemTable.appendChild(tr);
+		});
 		
-		function getHash (arraOfObjects){
-			studentsArray.forEach(function(item){
-			valueToChange.push(item.toJson())
-			})
-		};
-		
+		contentElement.appendChild(itemTable);
+//		listItemView.renderItem(studentsArray);
+						
     }	
-
+	return this;
 }

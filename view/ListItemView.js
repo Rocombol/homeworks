@@ -1,40 +1,32 @@
 function ListItemView () {
-    this.renderItem = function(valueHash, content) {
+    this.renderItem = function(itemStudent) {
         var itemData = '',
-            itemDiv = document.createElement('div'),
-            buttons,
+            itemTr = document.createElement('tr'),
+            singleStudent=itemStudent.toJSON(),
+            button,
 			infoView,
-			clickElement,
 			addInfoElement;
 		
-        itemData += renderTemplate(listItemTpl, valueHash);
-
-        itemDiv.innerHTML = itemData;
+			itemData += renderTemplate(listItemTpl, singleStudent);		
+		    itemTr.innerHTML=itemData;
+			      
+		button = itemTr.querySelector('.showInfo');        		
 		
-        content.append(itemDiv);
-
-        buttons = document.querySelectorAll('.showInfo');
-        
-		addInfoLstener(buttons);
-
-        function addInfoLstener (buttonsColletion) {
-            [].forEach.call(buttonsColletion, function (item,i) {
-                item.addEventListener('click', function () {
-					infoView = new InfoView();
-					clickElement = [valueHash[i]];
-					addInfoElement = document.body.querySelector('.addInfo');
+		button.addEventListener('click', findMore, false);
+		
+		function findMore (){
+			infoView=new InfoView();
+			
+			addInfoElement=document.body.querySelector('.addInfo');
                     
-					if(addInfoElement){
-				    		addInfoElement.parentNode.innerHTML = "";
-							infoView.renderInfo(clickElement)
-					} else{
-						infoView.renderInfo(clickElement);
-					}
-					
-                }, false);
-            });
-        };
+			if(addInfoElement){
+				addInfoElement.parentNode.innerHTML="";
+				infoView.renderInfo(singleStudent)
+			} else{
+				infoView.renderInfo(singleStudent);
+			}						
+		};		
+		return itemTr;
     };
-
     return this;
 };

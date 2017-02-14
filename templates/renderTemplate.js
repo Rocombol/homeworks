@@ -1,16 +1,11 @@
-    function renderTemplate (tpl, valueHash) {
-        var tplNew = '',
-			str;
-        
-		valueHash.forEach(function (item) {
-            str = tpl;
-            
-			for (var key in item) {
-                str = str.replace(key, item[key]);
-            }
-			
-            tplNew += str
-        });		
+    function renderTemplate (tpl, json) {
+        var tplNew = tpl,
+			dummyElement;
 		
+        for (key in json) {
+            dummyElement = ':' + key;
+            tplNew = tplNew.replace(dummyElement, json[key]);
+        }
+
         return tplNew;
     }

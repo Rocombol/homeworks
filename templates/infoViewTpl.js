@@ -1,2 +1,11 @@
-var infoViewTpl="<ul class='addInfo'><li>skype</li><li>age</li><li>phone</li><li><button class='closeInfo'>Close Info</button></li></ul>";
-
+    var infoViewTpl ="<ul class='addInfo'>\
+        <li>\
+            <button class='closeInfo'>Close</button>\
+        </li>\
+        <li><h3>Additional Information</h3></li>\
+        <li><h3>FullName</h3><span>:fullname</span></li>\
+        <li><h3>Gender</h3><span>:gender</span></li>\
+        <li><h3>Skype</h3><span>:skype</span></li>\
+        <li><h3>Phone</h3><span>:phone</span></li>\
+        <li><h3>Email</h3><span>:email</span></li>\
+        <li><h3>Age</h3><span>:age</span></li></ul>";

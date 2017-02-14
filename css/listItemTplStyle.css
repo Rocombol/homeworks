@@ -1,12 +1,12 @@
 table {
-    border-collapse: collapse;
+    border-collapse:separate;
 }
 
 td,
 th {
     padding: 5px;
     border: 1px solid #ccc;
-    text-align: left;
+    text-align: center;
 	width: 220px;
 }
 
@@ -16,4 +16,12 @@ tr{
 
 tr:hover {
     background-color: #049FA4;
+}
+
+.showInfo{
+    background-color: #AEA2A3;
+    height: 100%;
+    padding: 15px;
+    width: 150px;
+	border-radius: 10px
 }
