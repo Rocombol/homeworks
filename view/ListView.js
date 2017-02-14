@@ -2,7 +2,7 @@ function ListView () {
     this.renderList = function(studentsArray) {		
 		var listItemView=new ListItemView(),
 			contentElement = document.getElementById('content'),
-			itemTable = document.createElement('table')
+			itemTable = document.createElement('table');
 		
 		contentElement.innerHTML=listTpl;
 		
@@ -12,9 +12,7 @@ function ListView () {
 			itemTable.appendChild(tr);
 		});
 		
-		contentElement.appendChild(itemTable);
-//		listItemView.renderItem(studentsArray);
-						
-    }	
+		contentElement.appendChild(itemTable);						
+    };	
 	return this;
 }

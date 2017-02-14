@@ -7,7 +7,7 @@ th {
     padding: 5px;
     border: 1px solid #ccc;
     text-align: center;
-	width: 220px;
+	width: 170px;
 }
 
 tr{
@@ -21,7 +21,26 @@ tr:hover {
 .showInfo{
     background-color: #AEA2A3;
     height: 100%;
-    padding: 15px;
-    width: 150px;
+    padding: 10px;
+    width: 95px;
 	border-radius: 10px
 }
+
+.editInfo{
+    background-color: #9999FF;
+    height: 100%;
+    padding: 10px;
+    width: 95px;
+	border-radius: 10px
+}
+
+
+
+
+
+
+
+
+
+
+

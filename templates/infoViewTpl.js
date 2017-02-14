@@ -8,4 +8,4 @@
         <li><h3>Skype</h3><span>:skype</span></li>\
         <li><h3>Phone</h3><span>:phone</span></li>\
         <li><h3>Email</h3><span>:email</span></li>\
-        <li><h3>Age</h3><span>:age</span></li></ul>";
+        <li><h3>Age</h3><span>:birthdate</span></li></ul>";

@@ -7,5 +7,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     listView = new ListView();
 
-    listView.renderList(studentsList.arrayOfStudents);
+    listView.renderList(studentsList.getList());
 }, false);
