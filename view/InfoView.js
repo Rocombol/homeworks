@@ -1,3 +1,5 @@
+'use strict';
+
 function InfoView () {
     this.renderInfo = function(json) {
         var infoData = '',

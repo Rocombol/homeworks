@@ -4,19 +4,21 @@ table {
 
 td,
 th {
-    padding: 5px;
+/*    padding: 5px;*/
     border: 1px solid #ccc;
     text-align: center;
-	width: 170px;
+	width: 150px;
 }
 
 tr{
     background-color: #eeffee;
 }
 
+/*
 tr:hover {
     background-color: #049FA4;
 }
+*/
 
 .showInfo{
     background-color: #AEA2A3;

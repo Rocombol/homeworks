@@ -1,13 +1,15 @@
+'use strict';
+
 function ListView () {
-    this.renderList = function(studentsArray) {		
-		var listItemView=new ListItemView(),
-			contentElement = document.getElementById('content'),
+    this.renderList = function(studentList) {		
+		var contentElement = document.getElementById('content'),
 			itemTable = document.createElement('table');
 		
 		contentElement.innerHTML=listTpl;
 		
-		studentsArray.forEach(function(itemStudent){
-			var tr=listItemView.renderItem(itemStudent);
+		studentsList.forEach(function(itemStudent){
+		    var listItemView=new ListItemView(itemStudent),
+				tr=listItemView.renderItem(itemStudent);
 			
 			itemTable.appendChild(tr);
 		});

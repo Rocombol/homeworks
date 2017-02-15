@@ -1,3 +1,5 @@
+'use strict';
+
 function Student (name, lastName, gender, skype, phone, email, birthdate) {
     var values = {
         fullname: name + ' ' + lastName,
