@@ -1,38 +1,45 @@
 'use strict';
 
 function EditView (student) {
-	var student=student;
-    this.renderEditForm = function() {
+	var student = student;
+    
+	this.renderEditForm = function() {
 
          var editDiv = document.createElement('div'),
 			extraInfo=document.getElementById('extraInfo'),
 			saveButton,
 			closeButton;
 		
-		editDiv.classList.add('editPanel'), 
+		editDiv.classList.add('editPanel'); 
 		
         editDiv.innerHTML = editViewTpl;
         extraInfo.append(editDiv);		
         saveButton = document.querySelector('.saveInfo');
+		closeButton = document.querySelector('.closeEdit'); 
 				
-		saveButton.addEventListener('click', ChangeData, false);
+		saveButton.addEventListener('click', changeData, false);
+		closeButton.addEventListener('click', closeChangeData, false);
 		
-	
+		function closeChangeData (){
+			closeButton.closest('#extraInfo').innerHTML='';	
+			event.preventDefault();		
+		}
+				
     };
 			
-	function ChangeData(){
-        var formData = {},
-			inputs = document.getElementsByTagName('input');
-		
-        [].forEach.call(inputs, function(input){
-            //formData[input.name] = input.value;
-			student.setValue(input.name, input.value)
+	function changeData (){
+			var listView = new ListView(student),
+			inputCollection = document.getElementsByTagName('input');
+					
+        [].forEach.call(inputCollection, function(input){			
+			if (input.value!==''){
+				student.setValue(input.name, input.value)				
+			}   			
         });	
 		
-		//listItemView.renderItem(formData);
-		
+		listView.renderList();		
 		event.preventDefault();
-	}	
+	};
 	
     return this;
 }

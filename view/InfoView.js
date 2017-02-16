@@ -1,13 +1,14 @@
 'use strict';
 
-function InfoView () {
-    this.renderInfo = function(json) {
+function InfoView (student) {
+	var student = student;
+    this.renderInfo = function(student) {
         var infoData = '',
             infoDiv = document.createElement('div'),
 			extraInfo=document.getElementById('extraInfo'),
 			closeButton;
 		
-        infoData += renderTemplate(infoViewTpl, json);
+        infoData += renderTemplate(infoViewTpl, student);
         infoDiv.innerHTML = infoData;
         extraInfo.append(infoDiv);		
         closeButton = document.querySelector('.closeInfo');

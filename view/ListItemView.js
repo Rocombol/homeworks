@@ -3,7 +3,7 @@ function ListItemView (student) {
 	var student = student,
 		singleStudent = student.toJSON();
 	
-    this.renderItem = function(itemStudent) {
+    this.renderItem = function(student) {
         var itemData = '',
             itemTr = document.createElement('tr'),
             singleStudent=student.toJSON(),
@@ -16,62 +16,36 @@ function ListItemView (student) {
 		buttonFind = itemTr.querySelector('.showInfo');
 		buttonEdit = itemTr.querySelector('.editInfo');
 		
-		buttonFind.addEventListener('click', findMore, false);
-		
+		buttonFind.addEventListener('click', findMore, false);			
 		buttonEdit.addEventListener('click', editInfo, false);
 		
 		return itemTr;
     };
 	
-//    this.changeItem = function(changeItem) {
-//        var itemData = '',
-//            itemTr = document.createElement('tr'),
-//            //singleStudent=itemStudent.toJSON(),
-//            buttonFind,
-//			buttonEdit;
-//		
-//			itemData += renderTemplate(listItemTpl, changeItem);		
-//		    itemTr.innerHTML=itemData;
-//			      
-//		buttonFind = itemTr.querySelector('.showInfo');
-//		buttonEdit = itemTr.querySelector('.editInfo');
-//		
-//		buttonFind.addEventListener('click', findMore, false);
-//		
-//		buttonEdit.addEventListener('click', editInfo, false);
-//		
-//		return itemTr;
-//    };	
-
 		function findMore (){
 			var infoView = new InfoView(),
-				addInfoElement;
-			
-			addInfoElement = document.body.querySelector('.addInfo');
+				addInfoElement = document.body.querySelector('.addInfo');
                     
 			if(addInfoElement){
-				addInfoElement.parentNode.innerHTML = "";
+				document.querySelector('#extraInfo').innerHTML = "";
 				infoView.renderInfo(singleStudent)
 			} else{
+				document.querySelector('#extraInfo').innerHTML = "";
 				infoView.renderInfo(singleStudent);
 			}						
 		};
-
+	
 		function editInfo (){
 			var editView = new EditView(student),
-				addEditElement;
-			
-			addEditElement = document.body.querySelector('.editPanel');
+				addEditElement = document.body.querySelector('.editPanel');
                     
 			if(addEditElement){
-				addEditElement.parentNode.innerHTML = "";
+				document.querySelector('#extraInfo').innerHTML = "";
 				editView.renderEditForm();
 			} else{
+				document.querySelector('#extraInfo').innerHTML = "";
 				editView.renderEditForm();
 			}						
-		};		
-	
-	
-	
+		};				
     return this;
 };

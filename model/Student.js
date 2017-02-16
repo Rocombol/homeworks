@@ -2,7 +2,8 @@
 
 function Student (name, lastName, gender, skype, phone, email, birthdate) {
     var values = {
-        fullname: name + ' ' + lastName,
+        name: name,
+		lastName: lastName,
         gender: gender,
         phone: phone,
         skype: skype,
