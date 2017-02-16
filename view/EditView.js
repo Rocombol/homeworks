@@ -32,9 +32,11 @@ function EditView (student) {
 			inputCollection = document.getElementsByTagName('input');
 					
         [].forEach.call(inputCollection, function(input){			
+			
 			if (input.value!==''){
 				student.setValue(input.name, input.value)				
-			}   			
+			} 
+			
         });	
 		
 		listView.renderList();		

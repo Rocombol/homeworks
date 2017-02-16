@@ -28,7 +28,7 @@ function ListItemView (student) {
                     
 			if(addInfoElement){
 				document.querySelector('#extraInfo').innerHTML = "";
-				infoView.renderInfo(singleStudent)
+				infoView.renderInfo(singleStudent);
 			} else{
 				document.querySelector('#extraInfo').innerHTML = "";
 				infoView.renderInfo(singleStudent);

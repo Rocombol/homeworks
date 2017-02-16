@@ -2,12 +2,7 @@
 
 var studentsList= new StudentsList();
 document.addEventListener('DOMContentLoaded', function () {
-//    var studentsList,
-      var  listView;
+    var listView = new ListView(studentsList);
 	
-   // studentsList = new StudentsList();
-
-    listView = new ListView(studentsList);
-
     listView.renderList();
 }, false);
