@@ -1,11 +1,12 @@
 'use strict';
 
 function InfoView (student) {
-	var student = student;
+	var student = student,
+		extraInfo = document.getElementById('extraInfo');
+	
     this.renderInfo = function(student) {
         var infoData = '',
             infoDiv = document.createElement('div'),
-			extraInfo=document.getElementById('extraInfo'),
 			closeButton;
 		
         infoData += renderTemplate(infoViewTpl, student);
@@ -19,5 +20,15 @@ function InfoView (student) {
 			closeButton.closest('div').innerHTML='';						
 		}
     };
+	
+	this.removeInfo = function (){
+		extraInfo.innerHTML='';
+	};
+	
+	
+	
+	
+	
+	
     return this;
 }

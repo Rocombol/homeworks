@@ -9,8 +9,8 @@ function StudentsList() {
     
         var students = [first, second, third, fourth, fifth, sixth];
 	    
-	    this.forEach = function (item) {
-			students.forEach(item);		  
+	    this.forEach = function (itemStudent) {
+			students.forEach(itemStudent);		  
 		} 
 		
     return this;

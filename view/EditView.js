@@ -1,12 +1,12 @@
 'use strict';
 
 function EditView (student) {
-	var student = student;
-    
+	var student = student,
+    	extraInfo = document.getElementById('extraInfo');
+			
 	this.renderEditForm = function() {
 
          var editDiv = document.createElement('div'),
-			extraInfo=document.getElementById('extraInfo'),
 			saveButton,
 			closeButton;
 		
@@ -26,15 +26,18 @@ function EditView (student) {
 		}
 				
     };
+	
+	this.removeEditInfo = function (){
+		extraInfo.innerHTML='';
+	}
 			
 	function changeData (){
 			var listView = new ListView(student),
 			inputCollection = document.getElementsByTagName('input');
 					
-        [].forEach.call(inputCollection, function(input){			
-			
+        [].forEach.call(inputCollection, function(input){						
 			if (input.value!==''){
-				student.setValue(input.name, input.value)				
+				student.set(input.name, input.value)				
 			} 
 			
         });	

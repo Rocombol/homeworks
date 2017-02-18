@@ -14,25 +14,14 @@ function Student (name, lastName, gender, skype, phone, email, birthdate) {
     this.toJSON = function () {
         return values;
     };
-
-    this.getValue = function (desiredKey) {
-        for (var key in values) {
-            if (key === desiredKey) {
-                return values[desiredKey];
-            }
-        }
-        throw new Error('Key: ' + desiredKey + ' is not found');
-
-    };
 	
-    this.setValue = function (desiredKey, desiredValue) {
-          
-		for (var key in values) {
-             if (key === desiredKey) {
-                  values[desiredKey]=desiredValue;
-              }            
-          }      
+    this.get = function (key) {
+        return values[key];
     };
+
+    this.set = function (key, value) {
+        values[key] = value;
+    };	
 	
     function getAge(birthdate) {
         var birthdateToDate,

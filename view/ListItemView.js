@@ -1,9 +1,10 @@
 'use strict';
+
 function ListItemView (student) {
 	var student = student,
-		singleStudent = student.toJSON();
+		studentJSON = student.toJSON();
 	
-    this.renderItem = function(student) {
+    this.renderItem = function () {
         var itemData = '',
             itemTr = document.createElement('tr'),
             singleStudent=student.toJSON(),
@@ -11,7 +12,7 @@ function ListItemView (student) {
 			buttonEdit;
 		
 			itemData += renderTemplate(listItemTpl, singleStudent);		
-		    itemTr.innerHTML=itemData;
+		    itemTr.innerHTML = itemData;
 			      
 		buttonFind = itemTr.querySelector('.showInfo');
 		buttonEdit = itemTr.querySelector('.editInfo');
@@ -22,28 +23,24 @@ function ListItemView (student) {
 		return itemTr;
     };
 	
-		function findMore (){
-			var infoView = new InfoView(),
-				addInfoElement = document.body.querySelector('.addInfo');
-                    
-			if(addInfoElement){
-				document.querySelector('#extraInfo').innerHTML = "";
-				infoView.renderInfo(singleStudent);
-			} else{
-				document.querySelector('#extraInfo').innerHTML = "";
-				infoView.renderInfo(singleStudent);
+		function findMore () {
+			var infoView = new InfoView();
+			
+			if(infoView){
+				infoView.removeInfo();
+				infoView.renderInfo(studentJSON);
+			} else{		
+				infoView.renderInfo(studentJSON);
 			}						
 		};
 	
 		function editInfo (){
-			var editView = new EditView(student),
-				addEditElement = document.body.querySelector('.editPanel');
+			var editView = new EditView(student);
                     
-			if(addEditElement){
-				document.querySelector('#extraInfo').innerHTML = "";
+			if(editView){				
+				editView.removeEditInfo();
 				editView.renderEditForm();
 			} else{
-				document.querySelector('#extraInfo').innerHTML = "";
 				editView.renderEditForm();
 			}						
 		};				
