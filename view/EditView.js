@@ -23,8 +23,7 @@ function EditView (student) {
 		function closeChangeData (){
 			closeButton.closest('#extraInfo').innerHTML='';	
 			event.preventDefault();		
-		}
-				
+		}				
     };
 	
 	this.removeEditInfo = function (){
@@ -33,16 +32,23 @@ function EditView (student) {
 			
 	function changeData (){
 			var listView = new ListView(student),
-			inputCollection = document.getElementsByTagName('input');
+			    inputCollection = document.getElementsByTagName('input'),
+				editView = new EditView(),
+				infoView = new InfoView();
 					
-        [].forEach.call(inputCollection, function(input){						
-			if (input.value!==''){
-				student.set(input.name, input.value)				
-			} 
-			
-        });	
+			[].forEach.call(inputCollection, function(input){						
+				if (input.value!==''){
+					student.set(input.name, input.value)				
+				} 
+
+			});	
 		
-		listView.renderList();		
+		listView.renderList();
+
+		editView.removeEditInfo();
+		
+		infoView.renderInfo(student);
+		
 		event.preventDefault();
 	};
 	

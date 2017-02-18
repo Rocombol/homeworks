@@ -9,7 +9,7 @@ function InfoView (student) {
             infoDiv = document.createElement('div'),
 			closeButton;
 		
-        infoData += renderTemplate(infoViewTpl, student);
+        infoData += renderTemplate(infoViewTpl, student.toJSON());
         infoDiv.innerHTML = infoData;
         extraInfo.append(infoDiv);		
         closeButton = document.querySelector('.closeInfo');
@@ -24,11 +24,6 @@ function InfoView (student) {
 	this.removeInfo = function (){
 		extraInfo.innerHTML='';
 	};
-	
-	
-	
-	
-	
 	
     return this;
 }
