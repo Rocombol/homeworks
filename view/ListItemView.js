@@ -28,9 +28,9 @@ function ListItemView (student) {
 			
 			if(infoView){
 				infoView.removeInfo();
-				infoView.renderInfo(studentJSON);
+				infoView.renderInfo(student);
 			} else{		
-				infoView.renderInfo(studentJSON);
+				infoView.renderInfo(student);
 			}						
 		};
 	
