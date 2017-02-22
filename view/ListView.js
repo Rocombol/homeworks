@@ -1,13 +1,15 @@
 'use strict';
 
-function ListView () {
-    this.renderList = function(studentList) {		
+function ListView (studentsList) {
+	var students = studentsList;
+	
+    this.renderList = function() {		
 		var contentElement = document.getElementById('content'),
 			itemTable = document.createElement('table');
 		
 		contentElement.innerHTML=listTpl;
 		
-		studentsList.forEach(function(itemStudent){
+		students.forEach(function(itemStudent){
 		    var listItemView=new ListItemView(itemStudent),
 				tr=listItemView.renderItem(itemStudent);
 			

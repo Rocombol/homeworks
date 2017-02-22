@@ -1,48 +1,77 @@
 'use strict';
 
-function ListItemView (student) {
-	var student = student,
-		studentJSON = student.toJSON();
+function ListItemView (_student) {
+	var student = _student,
+		itemTr = document.createElement('tr'),
+		buttonFind, buttonEdit;
 	
     this.renderItem = function () {
         var itemData = '',
-            itemTr = document.createElement('tr'),
-            singleStudent=student.toJSON(),
-            buttonFind,
-			buttonEdit;
+            json = student.toJSON();
 		
-			itemData += renderTemplate(listItemTpl, singleStudent);		
-		    itemTr.innerHTML = itemData;
+		itemData += renderTemplate(listItemTpl, json);		
+		itemTr.innerHTML = itemData;
 			      
-		buttonFind = itemTr.querySelector('.showInfo');
-		buttonEdit = itemTr.querySelector('.editInfo');
-		
-		buttonFind.addEventListener('click', findMore, false);			
-		buttonEdit.addEventListener('click', editInfo, false);
+		queryListeners();
+				
+		student.on('change', changeStudent);
 		
 		return itemTr;
     };
 	
-		function findMore () {
-			var infoView = new InfoView();
+	function changeStudent () {
+		var itemData = '',
+			json = student.toJSON();
+		     
+		queryRemoveListeners();		
+				
+		itemData += renderTemplate(listItemTpl, json);
+		
+		itemTr.innerHTML = itemData;
+		
+		queryListeners();						         								
+	}
+		
+	function findMore () {  
+			var infoView = new InfoView(student);
 			
 			if(infoView){
-				infoView.removeInfo();
-				infoView.renderInfo(student);
+				deleteExtraInfo();
+				infoView.renderInfo();
 			} else{		
-				infoView.renderInfo(student);
+				infoView.renderInfo();
 			}						
-		};
+	};
 	
-		function editInfo (){
+	function editInfo () {
 			var editView = new EditView(student);
                     
-			if(editView){				
-				editView.removeEditInfo();
+			if(editView){
+				deleteExtraInfo();
 				editView.renderEditForm();
 			} else{
-				editView.renderEditForm();
+				deleteExtraInfo();
 			}						
-		};				
+	};
+		
+	function deleteExtraInfo () {
+			var extraInfo = document.getElementById('extraInfo');
+			extraInfo.innerHTML='';
+	}
+	
+	function queryRemoveListeners () {
+		buttonFind = itemTr.querySelector('.showInfo');
+		buttonEdit = itemTr.querySelector('.editInfo');
+        buttonFind.removeEventListener('click', findMore);
+        buttonEdit.removeEventListener('click', editInfo);				
+	}
+	
+	function queryListeners () {
+		buttonFind = itemTr.querySelector('.showInfo');
+		buttonEdit = itemTr.querySelector('.editInfo');		
+		buttonFind.addEventListener('click', findMore, false);			
+		buttonEdit.addEventListener('click', editInfo, false);		
+	};
+	
     return this;
 };

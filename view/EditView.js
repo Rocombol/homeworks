@@ -1,56 +1,50 @@
 'use strict';
 
-function EditView (student) {
-	var student = student,
-    	extraInfo = document.getElementById('extraInfo');
+function EditView (_student) {
+	var student = _student,
+    	extraInfo = document.getElementById('extraInfo'),
+		saveButton,
+		closeButton;		
 			
 	this.renderEditForm = function() {
-
-         var editDiv = document.createElement('div'),
-			saveButton,
-			closeButton;
+         var editDiv = document.createElement('div');
 		
 		editDiv.classList.add('editPanel'); 
 		
         editDiv.innerHTML = editViewTpl;
         extraInfo.append(editDiv);		
-        saveButton = document.querySelector('.saveInfo');
-		closeButton = document.querySelector('.closeEdit'); 
+        saveButton = editDiv.querySelector('.saveInfo');
+		closeButton = editDiv.querySelector('.closeEdit'); 
 				
 		saveButton.addEventListener('click', changeData, false);
-		closeButton.addEventListener('click', closeChangeData, false);
-		
-		function closeChangeData (){
-			closeButton.closest('#extraInfo').innerHTML='';	
-			event.preventDefault();		
-		}				
+		closeButton.addEventListener('click', deleteExtraInfo, false);
+					
     };
 	
-	this.removeEditInfo = function (){
-		extraInfo.innerHTML='';
-	}
 			
-	function changeData (){
-			var listView = new ListView(student),
-			    inputCollection = document.getElementsByTagName('input'),
-				editView = new EditView(),
-				infoView = new InfoView();
-					
+	function changeData () {
+			var inputCollection = document.getElementsByTagName('input'),
+				infoView;
+				
 			[].forEach.call(inputCollection, function(input){						
 				if (input.value!==''){
 					student.set(input.name, input.value)				
 				} 
-
 			});	
 		
-		listView.renderList();
+			infoView = new InfoView(student);
+			
+			deleteExtraInfo();
 
-		editView.removeEditInfo();
-		
-		infoView.renderInfo(student);
-		
-		event.preventDefault();
+			infoView.renderInfo();
+			//event.preventDefault();
 	};
+	
+	function deleteExtraInfo () {
+		saveButton.removeEventListener('click', changeData)
+		closeButton.removeEventListener('click', deleteExtraInfo)
+		extraInfo.innerHTML = '';
+	}
 	
     return this;
 }

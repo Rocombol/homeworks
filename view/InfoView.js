@@ -1,29 +1,27 @@
 'use strict';
 
-function InfoView (student) {
-	var student = student,
+function InfoView (_student) {
+	var student = _student,
+		json = student.toJSON(), 
 		extraInfo = document.getElementById('extraInfo');
 	
-    this.renderInfo = function(student) {
+    this.renderInfo = function() {		
         var infoData = '',
             infoDiv = document.createElement('div'),
 			closeButton;
 		
-        infoData += renderTemplate(infoViewTpl, student.toJSON());
+        infoData += renderTemplate(infoViewTpl, json);
         infoDiv.innerHTML = infoData;
         extraInfo.append(infoDiv);		
         closeButton = document.querySelector('.closeInfo');
 				
 		closeButton.addEventListener('click', closeInfo, false);
 		
-		function closeInfo(){
-			closeButton.closest('div').innerHTML='';						
+		function closeInfo() {
+			closeButton.removeEventListener('click', closeInfo)
+			closeButton.closest('#extraInfo').innerHTML='';						
 		}
     };
-	
-	this.removeInfo = function (){
-		extraInfo.innerHTML='';
-	};
 	
     return this;
 }

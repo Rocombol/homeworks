@@ -1,8 +1,9 @@
 'use strict';
 
-var studentsList= new StudentsList();
+var studentsList = new StudentsList(),
+    listView = new ListView(studentsList);
+
 document.addEventListener('DOMContentLoaded', function () {
-    var listView = new ListView(studentsList);
 	
     listView.renderList();
 }, false);
